@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://<github-username>.github.io/sk-energy/sitemap-index.xml
