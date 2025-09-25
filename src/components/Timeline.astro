@@ -1,0 +1,17 @@
+---
+const { events = [] } = Astro.props;
+---
+<section aria-label="회사 연혁" class="relative">
+  <ol class="relative border-l border-primary/30 pl-6">
+    {events.map((event) => (
+      <li class="mb-10 ml-4">
+        <div class="absolute -left-[11px] mt-1.5 h-5 w-5 rounded-full border-2 border-primary/60 bg-surface"></div>
+        <time class="text-sm font-semibold uppercase tracking-wide text-primary/70">
+          {event.year}
+        </time>
+        <h3 class="text-xl font-semibold text-primary">{event.title}</h3>
+        <p class="mt-2 text-sm text-neutral/80 dark:text-neutral/60">{event.description}</p>
+      </li>
+    ))}
+  </ol>
+</section>

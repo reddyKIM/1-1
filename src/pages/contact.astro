@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+<BaseLayout title="문의 | SK에너지" description="SK에너지 사업 및 협업 문의를 남겨주세요.">
+  <header class="space-y-4">
+    <p class="text-sm uppercase tracking-widest text-primary/70">CONTACT</p>
+    <h1 class="text-4xl font-semibold text-primary">파트너십 & 미디어 문의</h1>
+    <p class="max-w-3xl text-lg text-neutral/80 dark:text-neutral/40">
+      아래 양식을 작성하거나 메일/전화로 연락 주시면 담당자가 신속히 응답드립니다.
+    </p>
+  </header>
+
+  <section class="mt-16 grid gap-12 lg:grid-cols-[2fr,1fr]" aria-labelledby="contact-form">
+    <div>
+      <h2 id="contact-form" class="text-2xl font-semibold text-primary">문의 양식</h2>
+      <form
+        class="mt-6 space-y-6"
+        action="mailto:pr@skenergy.com"
+        method="post"
+        encType="text/plain"
+      >
+        <div class="grid gap-2">
+          <label class="text-sm font-semibold text-neutral" for="name">이름</label>
+          <input
+            class="rounded-[var(--radius-sm)] border border-neutral/20 bg-white/80 px-4 py-3 text-sm text-neutral shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-slate-900/70"
+            id="name"
+            name="name"
+            type="text"
+            required
+          />
+        </div>
+        <div class="grid gap-2">
+          <label class="text-sm font-semibold text-neutral" for="email">이메일</label>
+          <input
+            class="rounded-[var(--radius-sm)] border border-neutral/20 bg-white/80 px-4 py-3 text-sm text-neutral shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-slate-900/70"
+            id="email"
+            name="email"
+            type="email"
+            required
+          />
+        </div>
+        <div class="grid gap-2">
+          <label class="text-sm font-semibold text-neutral" for="message">문의 내용</label>
+          <textarea
+            class="min-h-[160px] rounded-[var(--radius-sm)] border border-neutral/20 bg-white/80 px-4 py-3 text-sm text-neutral shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-slate-900/70"
+            id="message"
+            name="message"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          메일 보내기
+        </button>
+      </form>
+    </div>
+
+    <aside class="space-y-6" aria-labelledby="contact-info">
+      <div class="space-y-3">
+        <h2 id="contact-info" class="text-2xl font-semibold text-primary">연락처</h2>
+        <p class="text-sm text-neutral/70 dark:text-neutral/40">
+          이메일 <a class="text-primary underline" href="mailto:pr@skenergy.com">pr@skenergy.com</a><br />
+          대표전화 <a class="text-primary underline" href="tel:+82234567890">+82-2-3456-7890</a>
+        </p>
+      </div>
+      <div class="space-y-3">
+        <h3 class="text-lg font-semibold text-primary">본사 위치</h3>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="block overflow-hidden rounded-[var(--radius-md)]">
+          <img
+            src="https://maps.googleapis.com/maps/api/staticmap?center=Seoul&zoom=12&size=600x300&maptype=roadmap&markers=color:red%7CSeoul"
+            alt="서울 본사 위치 지도"
+            loading="lazy"
+          />
+        </a>
+        <p class="text-sm text-neutral/70 dark:text-neutral/40">
+          서울특별시 중구 을지로 100 SK에너지 빌딩
+        </p>
+      </div>
+      <div class="space-y-3">
+        <h3 class="text-lg font-semibold text-primary">사업장</h3>
+        <ul class="space-y-2 text-sm text-neutral/70 dark:text-neutral/40">
+          <li>울산 Complex · 정유/석유화학 생산</li>
+          <li>부산 그린 수소 허브(건설 예정)</li>
+          <li>수원 R&D 센터 · 신에너지 연구</li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+</BaseLayout>
