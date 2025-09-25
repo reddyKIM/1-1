@@ -1,0 +1,28 @@
+---
+import ThemeToggle from './ThemeToggle.jsx';
+---
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur supports-[backdrop-filter]:bg-surface/70">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
+    <a class="flex items-center gap-3" href="/" aria-label="SK에너지 홈으로">
+      <span class="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-secondary text-white shadow-brand grid place-items-center font-semibold">SK</span>
+      <span class="font-display text-lg font-semibold text-primary">SK energy</span>
+    </a>
+    <nav aria-label="주요 메뉴" class="hidden items-center gap-6 text-sm font-medium text-neutral lg:flex">
+      <a class="transition hover:text-primary focus-visible:text-primary" href="/about">회사소개</a>
+      <a class="transition hover:text-primary focus-visible:text-primary" href="/business">사업</a>
+      <a class="transition hover:text-primary focus-visible:text-primary" href="/esg">ESG</a>
+      <a class="transition hover:text-primary focus-visible:text-primary" href="/media">미디어</a>
+      <a class="transition hover:text-primary focus-visible:text-primary" href="/careers">채용</a>
+      <a class="transition hover:text-primary focus-visible:text-primary" href="/contact">문의</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a
+        href="/contact"
+        class="hidden rounded-full border border-primary/50 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:inline-flex"
+      >
+        비즈니스 문의
+      </a>
+      <ThemeToggle client:idle />
+    </div>
+  </div>
+</header>
