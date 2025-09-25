@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+<BaseLayout title="채용 | SK에너지" description="SK에너지와 함께 지속 가능한 미래를 설계할 인재를 찾습니다.">
+  <header class="space-y-4">
+    <p class="text-sm uppercase tracking-widest text-primary/70">CAREERS</p>
+    <h1 class="text-4xl font-semibold text-primary">사람과 함께 성장하는 조직</h1>
+    <p class="max-w-3xl text-lg text-neutral/80 dark:text-neutral/40">
+      ESG 가치에 공감하며 도전과 혁신을 즐기는 인재를 기다립니다.
+    </p>
+  </header>
+
+  <section class="mt-16 space-y-8" aria-labelledby="evp">
+    <div>
+      <h2 id="evp" class="text-3xl font-semibold text-primary">Employee Value Proposition</h2>
+      <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">SK만의 경험과 지원 제도를 소개합니다.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-xl font-semibold text-primary">Purposeful Work</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">에너지 전환과 사회적 가치 창출에 직접 기여합니다.</p>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-xl font-semibold text-primary">Growth & Learning</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">맞춤형 러닝 플랫폼과 글로벌 프로젝트 기회를 제공합니다.</p>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-xl font-semibold text-primary">Life & Wellbeing</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">유연 근무제, 건강 케어, 가족 친화 정책으로 일과 삶의 균형을 지원합니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-20 space-y-8" aria-labelledby="culture">
+    <div>
+      <h2 id="culture" class="text-3xl font-semibold text-primary">문화 & 복지</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-lg font-semibold text-primary">협업 중심 문화</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">크로스 펑셔널 스쿼드 기반으로 민첩한 의사결정을 실행합니다.</p>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-lg font-semibold text-primary">지속 학습 지원</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">ESG·디지털 역량 강화를 위한 교육비와 인증 취득을 지원합니다.</p>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-lg font-semibold text-primary">건강 & 복지</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">전문 의료진과 협력한 건강 프로그램, 심리 상담을 제공합니다.</p>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-lg font-semibold text-primary">포용적 환경</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">다양성과 포용을 존중하는 조직 문화로 함께 성장합니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-20 space-y-6" aria-labelledby="apply">
+    <div class="space-y-2">
+      <h2 id="apply" class="text-3xl font-semibold text-primary">채용 공고 확인</h2>
+      <p class="text-sm text-neutral/70 dark:text-neutral/40">외부 채용 시스템(ATS)에서 최신 포지션을 확인하세요.</p>
+    </div>
+    <div class="flex flex-wrap gap-4">
+      <a
+        class="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        href="https://careers.skenergy.com"
+        target="_blank"
+        rel="noopener"
+      >
+        공고 바로가기
+      </a>
+      <a
+        class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-3 text-sm font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        href="mailto:talent@skenergy.com"
+      >
+        채용 문의 메일 보내기
+      </a>
+    </div>
+  </section>
+</BaseLayout>
