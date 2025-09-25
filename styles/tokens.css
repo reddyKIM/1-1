@@ -1,0 +1,41 @@
+:root {
+  color-scheme: light dark;
+  --color-primary: 6 34 87;
+  --color-secondary: 16 68 52;
+  --color-accent: 242 153 74;
+  --color-neutral: 28 35 45;
+  --color-surface: 246 248 252;
+  --color-text: 16 24 32;
+  --color-text-muted: 87 96 108;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --transition-base: 150ms ease;
+}
+
+[data-theme='dark'] {
+  --color-primary: 102 180 255;
+  --color-secondary: 47 161 124;
+  --color-accent: 255 186 109;
+  --color-neutral: 221 228 237;
+  --color-surface: 12 17 24;
+  --color-text: 236 242 249;
+  --color-text-muted: 163 173 191;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: 102 180 255;
+    --color-secondary: 47 161 124;
+    --color-accent: 255 186 109;
+    --color-neutral: 221 228 237;
+    --color-surface: 12 17 24;
+    --color-text: 236 242 249;
+    --color-text-muted: 163 173 191;
+  }
+}
