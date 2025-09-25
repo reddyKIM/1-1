@@ -1,0 +1,22 @@
+{
+  "emissions": [
+    { "year": 2021, "value": 100 },
+    { "year": 2022, "value": 92 },
+    { "year": 2023, "value": 85 }
+  ],
+  "energyEfficiency": [
+    { "year": 2021, "value": 78 },
+    { "year": 2022, "value": 82 },
+    { "year": 2023, "value": 88 }
+  ],
+  "safetyIndex": [
+    { "year": 2021, "value": 95 },
+    { "year": 2022, "value": 97 },
+    { "year": 2023, "value": 99 }
+  ],
+  "waterRecycling": [
+    { "year": 2021, "value": 65 },
+    { "year": 2022, "value": 71 },
+    { "year": 2023, "value": 78 }
+  ]
+}
