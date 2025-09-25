@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import TagFilter from '@components/TagFilter.jsx';
+import mediaData from '../../../data/media.json';
+---
+<BaseLayout title="미디어 | SK에너지" description="SK에너지의 최신 뉴스와 스토리를 만나보세요." pageType="collection">
+  <header class="space-y-4">
+    <p class="text-sm uppercase tracking-widest text-primary/70">MEDIA CENTER</p>
+    <h1 class="text-4xl font-semibold text-primary">뉴스 & 인사이트</h1>
+    <p class="max-w-3xl text-lg text-neutral/80 dark:text-neutral/40">
+      태그 필터를 활용해 관심 있는 주제를 빠르게 찾아보세요.
+    </p>
+  </header>
+
+  <section class="mt-12 space-y-6" aria-label="뉴스 목록">
+    <TagFilter client:visible articles={mediaData} />
+    <noscript>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {mediaData.map((article) => (
+          <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow-lg ring-1 ring-primary/10 dark:bg-slate-900/70">
+            <h2 class="text-xl font-semibold text-primary">{article.title}</h2>
+            <p class="mt-2 text-sm text-neutral/70">{article.excerpt}</p>
+            <a class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary" href={`/media/${article.slug}`}>
+              더 알아보기 →
+            </a>
+          </article>
+        ))}
+      </div>
+    </noscript>
+  </section>
+</BaseLayout>

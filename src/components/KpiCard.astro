@@ -1,0 +1,22 @@
+---
+const { title, value, unit, trend = 'stable', description } = Astro.props;
+const trendLabel = trend === 'up' ? '상승 추세' : trend === 'down' ? '감소 추세' : '안정 추세';
+const trendColor = trend === 'up' ? 'text-emerald-400' : trend === 'down' ? 'text-rose-400' : 'text-slate-300';
+const trendSymbol = trend === 'up' ? '▲' : trend === 'down' ? '▼' : '■';
+---
+<article
+  class="flex h-full flex-col justify-between gap-4 rounded-[var(--radius-md)] bg-surface/80 p-6 shadow-sm ring-1 ring-white/5 transition hover:-translate-y-1 hover:shadow-xl dark:bg-slate-900/70"
+  aria-live="polite"
+>
+  <header class="space-y-1">
+    <p class="text-sm uppercase tracking-widest text-primary/80">{title}</p>
+    <p class="text-3xl font-semibold text-primary">
+      {value}
+      {unit && <span class="ml-1 text-base text-neutral/70">{unit}</span>}
+    </p>
+  </header>
+  {description && <p class="text-sm text-neutral/80 dark:text-neutral/60">{description}</p>}
+  <p class={`text-xs font-medium ${trendColor}`} aria-label={`현재 ${title}는 ${trendLabel}입니다`}>
+    {trendSymbol} {trendLabel}
+  </p>
+</article>
