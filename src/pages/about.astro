@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Timeline from '@components/Timeline.astro';
+import timeline from '../../data/timeline.json';
+---
+<BaseLayout title="회사소개 | SK에너지" description="SK에너지의 미션, 비전, 연혁, 리더십, 안전/품질/환경 원칙을 소개합니다.">
+  <section class="space-y-6" aria-labelledby="mission">
+    <p class="text-sm uppercase tracking-widest text-primary/70">OUR IDENTITY</p>
+    <h1 id="mission" class="text-4xl font-semibold text-primary">에너지 전환을 이끄는 책임감</h1>
+    <p class="max-w-3xl text-lg text-neutral/80 dark:text-neutral/40">
+      SK에너지는 지속가능한 미래를 위해 탄소 저감과 신에너지 혁신에 집중합니다. 우리는 고객과 사회, 환경의 가치를 통합하여
+      ESG 경영을 실천합니다.
+    </p>
+    <div class="grid gap-6 md:grid-cols-3">
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h2 class="text-xl font-semibold text-primary">미션</h2>
+        <p class="mt-3 text-sm text-neutral/70 dark:text-neutral/40">
+          안전하고 깨끗한 에너지를 통해 고객과 지구의 행복을 창출합니다.
+        </p>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h2 class="text-xl font-semibold text-primary">비전</h2>
+        <p class="mt-3 text-sm text-neutral/70 dark:text-neutral/40">
+          2040 넷제로 달성과 글로벌 친환경 에너지 솔루션 리더십 확보.
+        </p>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h2 class="text-xl font-semibold text-primary">가치</h2>
+        <p class="mt-3 text-sm text-neutral/70 dark:text-neutral/40">
+          고객 신뢰, 혁신, 포용성, 지역사회와의 상생을 핵심 가치로 추구합니다.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-20 space-y-8" aria-labelledby="history">
+    <div class="space-y-2">
+      <p class="text-sm uppercase tracking-widest text-primary/70">HERITAGE</p>
+      <h2 id="history" class="text-3xl font-semibold text-primary">지속적인 성장의 여정</h2>
+      <p class="max-w-3xl text-sm text-neutral/70 dark:text-neutral/40">
+        창립 이후 60여 년간 한국 에너지 산업의 경쟁력을 높이며 친환경 혁신을 선도해 왔습니다.
+      </p>
+    </div>
+    <Timeline events={timeline} />
+  </section>
+
+  <section class="mt-20 space-y-8" aria-labelledby="leadership">
+    <div class="space-y-2">
+      <p class="text-sm uppercase tracking-widest text-primary/70">LEADERSHIP</p>
+      <h2 id="leadership" class="text-3xl font-semibold text-primary">리더십</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {["최태원", "조경목", "김준"].map((leader) => (
+        <article class="rounded-[var(--radius-md)] bg-white/80 p-6 text-center shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+          <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-primary/80 to-secondary/80 text-2xl font-semibold text-white">
+            {leader.slice(0, 2)}
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-primary">{leader}</h3>
+          <p class="text-sm text-neutral/70 dark:text-neutral/40">지속가능경영 위원회</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-20 space-y-6" aria-labelledby="principles">
+    <div class="space-y-2">
+      <p class="text-sm uppercase tracking-widest text-primary/70">PRINCIPLES</p>
+      <h2 id="principles" class="text-3xl font-semibold text-primary">안전 · 품질 · 환경 원칙</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-lg font-semibold text-primary">안전 최우선</h3>
+        <p class="mt-3 text-sm text-neutral/70 dark:text-neutral/40">
+          전 사업장의 무재해 목표와 실시간 모니터링 시스템으로 안전 문화를 확산합니다.
+        </p>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-lg font-semibold text-primary">품질 혁신</h3>
+        <p class="mt-3 text-sm text-neutral/70 dark:text-neutral/40">
+          고객 만족과 지속가능성 기준을 동시에 충족하는 제품과 서비스를 제공합니다.
+        </p>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-lg font-semibold text-primary">환경 책임</h3>
+        <p class="mt-3 text-sm text-neutral/70 dark:text-neutral/40">
+          탄소 저감, 자원 순환, 생물다양성 보전을 핵심 전략으로 실천합니다.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

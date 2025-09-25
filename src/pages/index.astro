@@ -1,0 +1,114 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import KpiCard from '@components/KpiCard.astro';
+import mediaData from '../../data/media.json';
+import esgData from '../../data/esg-kpi.json';
+
+const latestNews = mediaData.slice(0, 3);
+const latestEmissions = esgData.emissions[esgData.emissions.length - 1];
+const latestEfficiency = esgData.energyEfficiency[esgData.energyEfficiency.length - 1];
+const latestSafety = esgData.safetyIndex[esgData.safetyIndex.length - 1];
+const latestWater = esgData.waterRecycling[esgData.waterRecycling.length - 1];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'SK energy',
+  url: Astro.site?.href ?? 'https://<github-username>.github.io/sk-energy/',
+  logo: '/logo.svg',
+  sameAs: [
+    'https://www.linkedin.com',
+    'https://www.youtube.com',
+    'https://www.instagram.com'
+  ]
+};
+---
+<BaseLayout structuredData={structuredData}>
+  <Hero
+    title="탄소 중립 미래를 향한 SK에너지의 전환 이야기"
+    subtitle="정유 기술 혁신과 저탄소·신재생 사업을 통해 고객과 지구를 위한 에너지 솔루션을 제시합니다."
+    cta={{ label: '전환 전략 보기', href: '/business' }}
+    secondaryCta={{ label: 'ESG 성과 확인', href: '/esg' }}
+  />
+
+  <section class="mt-16 space-y-8" aria-labelledby="core-business">
+    <div class="flex items-baseline justify-between gap-6">
+      <div>
+        <p class="text-sm uppercase tracking-widest text-primary/70">OUR PORTFOLIO</p>
+        <h2 id="core-business" class="mt-2 text-3xl font-semibold text-primary">핵심 사업 영역</h2>
+      </div>
+      <a class="text-sm font-semibold text-primary hover:underline" href="/business">전체 보기</a>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow-lg ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-xl font-semibold text-primary">정유 & 고도화</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">
+          초고효율 공정과 디지털 전환을 통해 경쟁력을 강화하고, 친환경 연료 생산을 확대합니다.
+        </p>
+        <a class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary" href="/business#refining">
+          자세히 보기 →
+        </a>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow-lg ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-xl font-semibold text-primary">저탄소 전환</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">
+          CCUS, 바이오 연료, 에너지 효율 혁신을 통해 탄소 배출을 획기적으로 저감합니다.
+        </p>
+        <a class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary" href="/business#transition">
+          자세히 보기 →
+        </a>
+      </article>
+      <article class="rounded-[var(--radius-md)] bg-white/80 p-6 shadow-lg ring-1 ring-primary/10 dark:bg-slate-900/70">
+        <h3 class="text-xl font-semibold text-primary">신에너지 & 수소</h3>
+        <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">
+          재생에너지·수소 생태계 구축으로 새로운 성장 동력을 확보하고 고객 경험을 혁신합니다.
+        </p>
+        <a class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary" href="/business#newenergy">
+          자세히 보기 →
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-20 space-y-8" aria-labelledby="esg-highlight">
+    <div class="flex items-baseline justify-between gap-6">
+      <div>
+        <p class="text-sm uppercase tracking-widest text-primary/70">ESG DASHBOARD</p>
+        <h2 id="esg-highlight" class="mt-2 text-3xl font-semibold text-primary">ESG 하이라이트</h2>
+      </div>
+      <a class="text-sm font-semibold text-primary hover:underline" href="/esg">전체 지표 보기</a>
+    </div>
+    <div class="grid gap-6 md:grid-cols-4">
+      <KpiCard title="탄소 배출" value={`${latestEmissions.value}`} unit="만 tCO₂e" trend="down" description="3년 연속 감축" />
+      <KpiCard title="에너지 효율" value={`${latestEfficiency.value}`} unit="지수" trend="up" description="설비 효율화 +12%" />
+      <KpiCard title="안전 지수" value={`${latestSafety.value}`} unit="점" trend="up" description="중대사고 0건 유지" />
+      <KpiCard title="수자원 재활용" value={`${latestWater.value}`} unit="%" trend="up" description="순환 수자원 확대" />
+    </div>
+  </section>
+
+  <section class="mt-20 space-y-8" aria-labelledby="latest-news">
+    <div class="flex items-baseline justify-between gap-6">
+      <div>
+        <p class="text-sm uppercase tracking-widest text-primary/70">INSIGHTS</p>
+        <h2 id="latest-news" class="mt-2 text-3xl font-semibold text-primary">최신 뉴스</h2>
+      </div>
+      <a class="text-sm font-semibold text-primary hover:underline" href="/media">전체 뉴스</a>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {latestNews.map((item) => (
+        <article class="flex h-full flex-col justify-between rounded-[var(--radius-md)] bg-white/80 p-6 shadow-lg ring-1 ring-primary/10 transition hover:-translate-y-1 dark:bg-slate-900/70">
+          <div class="space-y-3">
+            <p class="text-xs font-semibold uppercase tracking-wide text-primary/80">
+              {new Date(item.date).toLocaleDateString('ko-KR', { year: 'numeric', month: 'short', day: 'numeric' })}
+            </p>
+            <h3 class="text-xl font-semibold text-primary">{item.title}</h3>
+            <p class="text-sm text-neutral/70 dark:text-neutral/40">{item.excerpt}</p>
+          </div>
+          <a class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary" href={`/media/${item.slug}`}>
+            더 읽기 →
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import KpiCard from '@components/KpiCard.astro';
+import Chart from '@components/Chart.jsx';
+import esgData from '../../data/esg-kpi.json';
+
+const csvRows = [
+  ['Indicator', 'Year', 'Value'],
+  ...Object.entries(esgData).flatMap(([key, series]) =>
+    series.map((item) => [key, item.year, item.value])
+  )
+];
+const csvContent = csvRows.map((row) => row.join(',')).join('\n');
+
+const latestEmissions = esgData.emissions[esgData.emissions.length - 1];
+const latestEfficiency = esgData.energyEfficiency[esgData.energyEfficiency.length - 1];
+const latestSafety = esgData.safetyIndex[esgData.safetyIndex.length - 1];
+const latestWater = esgData.waterRecycling[esgData.waterRecycling.length - 1];
+---
+<BaseLayout title="ESG 대시보드 | SK에너지" description="탄소배출, 에너지 효율, 안전 지표 등 SK에너지 ESG KPI를 확인하세요." pageType="article">
+  <header class="space-y-4">
+    <p class="text-sm uppercase tracking-widest text-primary/70">ESG PERFORMANCE</p>
+    <h1 class="text-4xl font-semibold text-primary">데이터 기반 ESG 경영</h1>
+    <p class="max-w-3xl text-lg text-neutral/80 dark:text-neutral/40">
+      모의 데이터를 기반으로 탄소 감축, 에너지 효율, 안전 지표 등 핵심 KPI를 시각화하여 투명하게 공개합니다.
+    </p>
+    <a
+      href={`data:text/csv;charset=utf-8,${encodeURIComponent(csvContent)}`}
+      download="sk-energy-esg-kpi.csv"
+      class="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+    >
+      CSV 다운로드
+    </a>
+  </header>
+
+  <section class="mt-16 space-y-8" aria-labelledby="kpi-cards">
+    <div>
+      <h2 id="kpi-cards" class="text-3xl font-semibold text-primary">KPI 요약</h2>
+      <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">
+        지속적인 개선 추이를 확인하세요.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-4">
+      <KpiCard title="탄소 배출" value={latestEmissions.value} unit="만 tCO₂e" trend="down" description="전년 대비 -7%" />
+      <KpiCard title="에너지 효율" value={latestEfficiency.value} unit="지수" trend="up" description="전년 대비 +6%" />
+      <KpiCard title="안전 지수" value={latestSafety.value} unit="점" trend="up" description="중대사고 0건" />
+      <KpiCard title="수자원 재활용" value={latestWater.value} unit="%" trend="up" description="재활용률 최고치" />
+    </div>
+  </section>
+
+  <section class="mt-20 space-y-10" aria-labelledby="trend-chart">
+    <div>
+      <h2 id="trend-chart" class="text-3xl font-semibold text-primary">연도별 트렌드</h2>
+      <p class="mt-2 text-sm text-neutral/70 dark:text-neutral/40">세부 지표의 연도별 추이를 확인하세요.</p>
+    </div>
+    <Chart
+      client:visible
+      title="ESG KPI"
+      datasets={[
+        { label: '탄소 배출', data: esgData.emissions },
+        { label: '에너지 효율', data: esgData.energyEfficiency },
+        { label: '안전 지수', data: esgData.safetyIndex },
+        { label: '수자원 재활용', data: esgData.waterRecycling }
+      ]}
+    />
+  </section>
+</BaseLayout>
