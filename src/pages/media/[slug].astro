@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import mediaData from '../../../data/media.json';
+import { Markdown } from 'astro/components';
+
+export function getStaticPaths() {
+  return mediaData.map((article) => ({ params: { slug: article.slug }, props: { article } }));
+}
+
+const { article } = Astro.props;
+---
+<BaseLayout title={`${article.title} | SK에너지`} description={article.excerpt} pageType="article">
+  <article class="prose prose-slate max-w-none dark:prose-invert">
+    <header class="not-prose mb-10 space-y-3">
+      <p class="text-sm uppercase tracking-widest text-primary/70">
+        {new Date(article.date).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+      <h1 class="text-4xl font-semibold text-primary">{article.title}</h1>
+      <ul class="flex flex-wrap gap-2" aria-label="태그">
+        {article.tags?.map((tag) => (
+          <li class="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">#{tag}</li>
+        ))}
+      </ul>
+    </header>
+    <Markdown content={article.content} />
+    <a class="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-primary" href="/media">
+      ← 목록으로 돌아가기
+    </a>
+  </article>
+</BaseLayout>
