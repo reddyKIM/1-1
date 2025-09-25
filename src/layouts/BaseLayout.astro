@@ -1,0 +1,62 @@
+---
+import Navbar from '@components/Navbar.astro';
+import Footer from '@components/Footer.astro';
+import '../../styles/globals.css';
+
+const {
+  title = 'SK에너지 | 지속 가능한 에너지 파트너',
+  description = '정유, 저탄소 전환, 신에너지 사업으로 미래 에너지 전환을 선도하는 SK에너지의 공식 홍보 웹사이트입니다.',
+  structuredData,
+  pageType = 'website'
+} = Astro.props;
+
+const url = Astro.url.href;
+---
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:site_name" content="SK energy" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#062257" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendardvariable.css" as="style" onload="this.rel='stylesheet'" />
+    <noscript>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendardvariable.css" />
+    </noscript>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+    )}
+    <script is:inline>
+      (function () {
+        try {
+          const storageKey = 'sk-energy-theme';
+          const stored = typeof window !== 'undefined' ? window.localStorage.getItem(storageKey) : null;
+          const prefersDark = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = stored ?? (prefersDark ? 'dark' : 'light');
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+        } catch (error) {
+          console.warn('Theme detection failed', error);
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-surface text-neutral">
+    <a href="#main" class="skip-link">본문 바로가기</a>
+    <Navbar />
+    <main id="main" class="mx-auto max-w-6xl px-6 py-12" role="main">
+      <slot />
+    </main>
+    <Footer />
+    <!-- Botpress WebChat embed here: TODO - Insert Botpress WebChat script with appropriate bot ID -->
+  </body>
+</html>
